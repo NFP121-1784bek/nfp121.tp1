@@ -1,5 +1,6 @@
 package question3;
-
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 /**
  * NFP121 TpIntroduction, usage de BlueJ et du "Submitter".
  * 
@@ -45,8 +46,22 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
-    }
+        String returnValue = "";
+        
+        int minNameLenght = Math.min(nom().length(),6);
+        
+        String firstNameLetters = nom().substring(0,minNameLenght).toLowerCase().replaceAll("[^A-Za-zÀ-ÿ]+","_");
+        
+        String firstLastNameLetter = prenom().substring(0,1).toLowerCase().replaceAll("[^A-Za-zÀ-ÿ]+","_");
+        
+        String result = nom().substring(0,minNameLenght).toLowerCase().replaceAll("[^A-Za-zÀ-ÿ]+","")+""+prenom().substring(0,1).toLowerCase().replaceAll("[^A-Za-zÀ-ÿ]+","_");
+        returnValue = firstNameLetters + "_" + firstLastNameLetter;
+        
+        String nfdNormalizedString = Normalizer.normalize(returnValue, Normalizer.Form.NFD); 
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
+        }
 
     /**
      * Lecture du nom de l'auditeur.
@@ -54,7 +69,7 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return this.nom.replace("^[Mr |Mme ]", "");
     }
 
     /**
@@ -63,7 +78,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return this.prenom;
     }
 
     /**
@@ -72,7 +87,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return this.matricule;
     }
 
     /**

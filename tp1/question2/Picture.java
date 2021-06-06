@@ -51,11 +51,18 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        sun.changeColor("blue");
+        sun.changeColor("yellow");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        
+        sun1 = new Circle();
+        sun1.changeColor("blue");
+        sun1.moveHorizontal(180);
+        sun1.moveVertical(-10);
+        sun1.changeSize(60);
+        sun1.makeVisible();
         
     }
 
@@ -87,7 +94,8 @@ public class Picture {
     
     public void sunSet(){
         if (wall != null){
-            sun.slowMoveVertical(300);
+            sun.slowMoveVertical(200);
+            sun1.slowMoveVertical(300);
         }
     }
 }

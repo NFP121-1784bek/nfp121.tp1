@@ -31,6 +31,6 @@ target2.height=50
 target2.name=PictureTest
 target2.showInterface=false
 target2.type=UnitTestTargetJunit5
-target2.width=90
+target2.width=80
 target2.x=170
 target2.y=90

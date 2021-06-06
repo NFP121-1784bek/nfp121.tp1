@@ -69,7 +69,10 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return this.nom.replace("^[Mr |Mme ]", "");
+        this.nom.replace("^[Mr |Mme ]", "");
+        this.nom.replaceAll("[0-9]", "");
+        return this.nom;
+        
     }
 
     /**
